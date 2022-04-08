@@ -35,14 +35,25 @@ export class ApplicationService {
   }
 
   async show(child: Child) {
-    console.log(child);
     const data = await this.applicationRepository.find({
-      where: { child: child },
+      where: { child: child},
       relations: ['profile', 'child'],
     });
     return {
       statusCode: HttpStatus.OK,
       message: `All Application for ${child.names} fetched successful`,
+      payload: data,
+    };
+  }
+
+  async showApprovedApplicationByProfile(profile: Profile) {
+    const data = await this.applicationRepository.find({
+      where: { profile: profile,stage:Stage.APPROVED },
+      relations: ['profile', 'child'],
+    });
+    return {
+      statusCode: HttpStatus.OK,
+      message: `All Application forfetched successful`,
       payload: data,
     };
   }

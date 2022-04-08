@@ -48,6 +48,16 @@ export class ApplicationController {
     );
   }
 
+  @Get('profile')
+  @UseGuards(AuthGuard('jwt'))
+  async showApprovedApplicationByProfile(@Request() req) {
+    const email = req.user.email;
+
+    return this.applicationService.showApprovedApplicationByProfile(
+      await this.profileService.readByEmail(email),
+    );
+  }
+
   @Get(':id')
   read(@Param('id') id: string) {
     return this.applicationService.read(id);
