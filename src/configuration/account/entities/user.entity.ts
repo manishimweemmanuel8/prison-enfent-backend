@@ -35,8 +35,8 @@ export class User {
   @DeleteDateColumn()
   deleteAt: Date;
 
-  @Column({ type: 'enum', enum: Role, array: true })
-  roles: Role[];
+  @Column({ type: 'enum', enum: Role })
+  roles: Role;
 
   @OneToMany(() => Prison, (prison) => prison.user)
   prisons: Prison[];

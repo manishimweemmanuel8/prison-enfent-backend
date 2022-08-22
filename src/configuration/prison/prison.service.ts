@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable prettier/prettier */
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MailService } from 'src/notification/mail/mail.service';
@@ -21,7 +23,7 @@ export class PrisonService {
     const data = this.prisonRepository.createPrison(dataDTO, userAccount);
     const user = {
       email: dataDTO.email,
-      roles: [Role.PRISON],
+      roles: Role.PRISON,
       status: true,
     };
     if ((await data).statusCode == 201) {
@@ -49,7 +51,10 @@ export class PrisonService {
   }
 
   async readByEmail(email: string) {
+
     const data= await this.prisonRepository.findOne({ where: { email: email } });
+    console.log(data);
+
    return data;
   }
 

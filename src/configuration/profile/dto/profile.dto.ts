@@ -13,6 +13,7 @@ import { Data } from 'ejs';
 
 export class ProfileDTO {
   @IsEmail()
+  @IsOptional()
   email: string;
   @IsString()
   @IsOptional()

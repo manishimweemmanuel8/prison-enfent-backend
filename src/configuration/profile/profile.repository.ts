@@ -58,6 +58,8 @@ export class ProfileRepository extends Repository<Profile> {
     profile.phone = phone;
     // profile.dob=dob;
 
+    console.log(profile);
+
     try {
       await this.save(profile);
       return {

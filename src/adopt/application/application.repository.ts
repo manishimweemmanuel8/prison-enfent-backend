@@ -17,7 +17,7 @@ export class ApplicationRepository extends Repository<Application> {
     profile: Profile,
     child: Child,
   ) {
-    const { comment, from, to, stage } = dataDTO;
+    const { comment, from, to, stage,leadEmail,leadName,leadPhone } = dataDTO;
 
 
 
@@ -25,34 +25,41 @@ export class ApplicationRepository extends Repository<Application> {
       comment,
       from,
       to,
+      leadEmail,
+      leadName,
+      leadPhone,
+      // certificate:fileName,
       stage: Stage.PENDING,
       child: child,
       profile: profile,
     });
+      //  console.log(`email:  ${leadEmail}  childId:  ${leadPhone}  file ${leadName} `);
 
-    console.log(appliation)
+    // console.log(appliation)
 
 
 
     try {
-      await this.save(appliation);
+      const data=await this.save(appliation);
       return {
         statusCode: HttpStatus.CREATED,
         message: 'New Application was created successful',
-        payload: appliation,
+        payload: data,
       };
     } catch (error) {
       if (error.code === '23505') {
         // duplicate Email
         throw new ConflictException('some already exists');
       } else {
+        // console.log(error)
+
         throw new InternalServerErrorException();
       }
     }
   }
 
   async editApplication(dataDTO: ApplicationDTO, id:string) {
-    const { comment, from, to, stage } = dataDTO;
+    const { comment, from, to, stage,testimony } = dataDTO;
 
 
     const application = await this.findOne(id,{
@@ -62,6 +69,7 @@ export class ApplicationRepository extends Repository<Application> {
     application.comment = comment;
 
     application.stage = stage;
+    application.testimony=testimony;
 
     try {
       await this.save(application);

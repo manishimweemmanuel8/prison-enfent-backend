@@ -18,6 +18,10 @@ export class ApplicationDTO {
 
   @IsString()
   @IsOptional()
+  testimony: string;
+
+  @IsString()
+  @IsOptional()
   childId: string;
 
   @IsDateString()
@@ -30,4 +34,16 @@ export class ApplicationDTO {
   @IsEmail()
   @IsOptional()
   email: string;
+
+  @IsString()
+  @IsOptional()
+  leadName: string;
+
+  @IsString()
+  @IsOptional()
+  leadPhone: string;
+
+  @IsEmail()
+  @IsOptional()
+  leadEmail: string;
 }

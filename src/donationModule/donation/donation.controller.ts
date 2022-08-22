@@ -25,8 +25,10 @@ export class DonationController {
   @Post()
   @UseGuards(AuthGuard('jwt'))
   async create(@Body() dataDTO: DonationDTO, @Request() req) {
-    const { requisitionId } = dataDTO;
-    const email = req.user.email;
+    const { requisitionId ,email} = dataDTO;
+    // const email = req.user.email;
+
+    console.log(dataDTO);
 
     const requisition = this.requisitionService.read(requisitionId);
     return this.donationService.create(

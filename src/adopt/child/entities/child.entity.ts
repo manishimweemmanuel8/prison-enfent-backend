@@ -28,6 +28,12 @@ export class Child {
   @Column({ type: 'date' })
   dob: Date;
 
+  @Column({ type: 'date', nullable:true })
+  from: Date;
+
+  @Column({ type: 'date', nullable:true })
+  to: Date;
+
   @Column()
   location: string;
 

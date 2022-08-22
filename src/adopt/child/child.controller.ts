@@ -43,6 +43,8 @@ export class ChildController {
   async show(@Request() req) {
     const user = req.user;
 
+    // console.log(user);
+
     return this.childService.show(
       await this.prisonService.readByEmail(user.email),
     );

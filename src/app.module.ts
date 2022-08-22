@@ -20,10 +20,10 @@ import { DonationModule } from './donationModule/donation/donation.module';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
-        type: 'postgres',
-        autoLoadEntities: true,
-        synchronize: true,
+        type: 'mysql', // <-- here?
         host: configService.get('DB_HOST'),
+        synchronize: true,
+        autoLoadEntities: true,
         port: configService.get('DB_PORT'),
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),

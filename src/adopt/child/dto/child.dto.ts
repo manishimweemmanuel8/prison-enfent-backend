@@ -14,6 +14,12 @@ export class ChildDTO {
   @IsOptional()
   dob: Date;
 
+  @IsOptional()
+  from: Date;
+
+  @IsOptional()
+  to: Date;
+
   @IsString()
   @IsOptional()
   location: string;

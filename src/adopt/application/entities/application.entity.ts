@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable prettier/prettier */
 import { Prison } from '../../../configuration/prison/entities/prison.entity';
 import {
   Column,
@@ -20,14 +22,31 @@ export class Application {
   @Column({ type: 'text', nullable: true })
   comment: string;
 
-  @Column({ type: 'date' })
+  @Column({ type: 'text', nullable: true })
+  testimony : string;
+
+  @Column({ type: 'date',nullable: true })
   from: Date;
 
-  @Column({ type: 'date' })
+  @Column({ type: 'date',nullable: true })
   to: Date;
 
   @Column({ type: 'enum', enum: Stage })
   stage: Stage;
+
+  @Column({ nullable: true })
+  leadName: string;
+
+  @Column({ nullable: true })
+  leadPhone: string;
+
+  @Column({ nullable: true })
+  leadEmail: string;
+
+  
+  @Column({ nullable: true })
+  certificate: string;
+  
 
   @CreateDateColumn()
   createdAt: Date;

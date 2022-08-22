@@ -11,16 +11,18 @@ import { Donation } from './entities/donation.entity';
 @EntityRepository(Donation)
 export class DonationRepository extends Repository<Donation> {
   async createDonation(dataDTO: DonationDTO, requisition, profile: Profile) {
-    const { amount, status } = dataDTO;
+    const { amount, status,donationType } = dataDTO;
 
     const donation = this.create({
       status: status,
       amount: amount,
+      donationType:donationType,
       requisition: requisition,
       profile: profile,
     });
 
     console.log(donation);
+
 
     try {
       await this.save(donation);
@@ -34,17 +36,19 @@ export class DonationRepository extends Repository<Donation> {
         // duplicate item names
         throw new ConflictException('some Donation already exists');
       } else {
+        console.log(error);
         throw new InternalServerErrorException();
       }
     }
   }
 
   async editDonation(dataDTO: DonationDTO, id) {
-    const { status } = dataDTO;
+    const { status,amount } = dataDTO;
 
     const donation = await this.findOne(id);
 
     donation.status = status;
+    donation.amount=amount;
 
     try {
       await this.save(donation);

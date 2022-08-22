@@ -28,6 +28,7 @@ export class RequisitionController {
     const { itemId } = dataDTO;
     const user = req.user;
     const item = this.itemService.read(itemId);
+    console.log(user);
     return this.requisitionService.create(
       dataDTO,
       (await item).payload,

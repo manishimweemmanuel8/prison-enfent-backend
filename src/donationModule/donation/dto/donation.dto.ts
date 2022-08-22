@@ -11,14 +11,18 @@ export class DonationDTO {
   @IsOptional()
   requisitionId: string;
 
+  @IsOptional()
+  amount: number;
+
   @IsString()
   @IsOptional()
-
-  amount: number;
+  donationType: string;
 
   @IsBoolean()
   status: boolean;
-  // @IsString()
-  // @IsEmail()
-  // email: string;
+
+  @IsString()
+  @IsEmail()
+  @IsOptional()
+  email: string;
 }

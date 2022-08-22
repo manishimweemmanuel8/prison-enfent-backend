@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   IsArray,
   IsBoolean,
@@ -12,8 +14,7 @@ import { Role } from '../entities/role.enum';
 export class CreateUserDto {
   @IsEmail()
   email: string;
-  @IsArray()
-  roles: Role[];
+  roles: Role;
   @IsBoolean()
   status: boolean;
   

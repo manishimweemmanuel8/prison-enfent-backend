@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable prettier/prettier */
 import {
   ConflictException,
   HttpStatus,
@@ -7,6 +10,7 @@ import { EntityRepository, Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { User } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { MailService } from 'src/notification/mail/mail.service';
 import { UserChangePasswordDto } from './dto/user-change-password.dto';
 import { EditUserDto } from './dto/edit-user.dto';

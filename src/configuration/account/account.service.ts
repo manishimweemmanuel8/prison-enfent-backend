@@ -1,3 +1,5 @@
+/* eslint-disable no-var */
+/* eslint-disable prefer-const */
 import { HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MailService } from '../../notification/mail/mail.service';
@@ -22,7 +24,7 @@ export class AccountService {
   ) {}
 
   async generatePassword() {
-    var length = 12,
+    let length = 12,
       charset =
         'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
       retVal = '';

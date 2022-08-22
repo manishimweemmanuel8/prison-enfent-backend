@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Profile } from '../../../configuration/profile/entities/profile.entity';
 import {
   Column,
@@ -15,8 +16,11 @@ export class Donation {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({nullable:true,default:0})
   amount: number;
+
+  @Column({nullable:true})
+  donationType: string;
 
   @Column()
   status: boolean;

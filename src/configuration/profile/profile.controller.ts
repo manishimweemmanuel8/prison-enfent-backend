@@ -34,6 +34,7 @@ export class ProfileController {
 
   @Patch(':id')
   edit(@Param() id: string, @Body() dataDTO: ProfileDTO) {
+    console.log(dataDTO);
     return this.profileService.edit(dataDTO, id);
   }
 }

@@ -12,13 +12,14 @@ export class ChildService {
   constructor(
     @InjectRepository(ChildRepository)
     private childRepository: ChildRepository,
-  ) {}
+  ) { }
 
   async create(dataDTO: ChildDTO, prison: Prison) {
     return await this.childRepository.createPrison(dataDTO, prison);
   }
 
   async show(prison: Prison) {
+    console.log(prison);
     const data = await this.childRepository.find({
       where: { prison: prison },
       relations: ['prison'],
@@ -88,7 +89,7 @@ export class ChildService {
 
   async notAdoptedChild(prison: Prison) {
     const data = await this.childRepository.find({
-      where: { prison: prison, adapted: false ,needAdoptation:true},
+      where: { prison: prison, adapted: false, needAdoptation: true },
       relations: ['prison'],
     });
     return {
@@ -101,7 +102,7 @@ export class ChildService {
 
   async allAdoptedChild() {
     const data = await this.childRepository.find({
-      where: { adapted: true },
+      where: { adapted: false },
       relations: ['prison'],
     });
     return {

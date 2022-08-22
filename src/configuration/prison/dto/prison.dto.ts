@@ -1,11 +1,9 @@
+/* eslint-disable prettier/prettier */
 import {
-  IsArray,
+
   IsBoolean,
   IsEmail,
   IsString,
-  Matches,
-  MaxLength,
-  MinLength,
 } from 'class-validator';
 
 export class PrisonDTO {
